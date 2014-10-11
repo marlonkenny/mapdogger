@@ -1,4 +1,35 @@
-$(document).ready(function() {
+var map;
+var grams = [];
+var mapLoaded = false;
+var gramsReady = false;
 
-  // See: http://docs.jquery.com/Tutorials:Introducing_$(document).ready()
-});
+getLocation();
+
+function locationComplete() {
+  console.log('location aquired')
+  instagramInit();
+};
+
+function gramsComplete(){
+  gramsReady = true;
+  console.log('grams ready');
+
+  if (mapLoaded) {
+    loadMarkers(grams);
+  }
+};
+
+// function placeMarker(gram){
+//   createMarker(gram);
+// };
+
+function mapLoading() {
+  google.maps.event.addListenerOnce(map, 'tilesloaded', function(){
+    mapLoaded = true;
+    console.log('map loaded');
+
+    if (gramsReady) {
+      loadMarkers(grams);
+    }
+  });
+};
