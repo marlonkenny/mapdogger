@@ -1,5 +1,40 @@
-html, body, #map-canvas {
-  height: 100%;
-  margin: 0px;
-  padding: 0px
+body {
+  padding-top: 55px;
+}
+.navbar {
+  margin-bottom: 0;
+  border-radius: 0;
+  border-bottom: 1px solid #E4E6E3;
+  padding:       10px;
+  background:    #fff;
+}
+.navbar ul {
+  margin: 0;
+}
+.title {
+  margin: 5px 0 0 4px;
+}
+.navbar button{
+  margin-right: 20px;
+}
+#left-bar {
+  width:     20%;
+  max-width: 500px;
+  float:     left;
+  padding:   15px;
+}
+.gram-container {
+  width:  100%;
+  height: 258px;
+}
+.gram-container img {
+  width: 100%;
+}
+#map-content {
+  position:    fixed;
+  width:       100%;
+  margin-left: 20%;
+}
+#map-canvas {
+  height: 100vh;
 }

@@ -29,7 +29,7 @@ function showError(error) {
 function showPosition(position) {
   var lat = position.coords.latitude;
   var lng = position.coords.longitude;
-
+  
   mapPosition["lat"] = lat;
   mapPosition["lng"] = lng;
 
@@ -40,11 +40,17 @@ function showPosition(position) {
 function initialize() {
   var mapOptions = {
     center: mapPosition,
-    zoom: 12, 
+    zoom: 13, 
     draggable: true, 
-    zoomControl: true, 
+    zoomControl: true,
+    zoomControlOptions: {
+      style: google.maps.ZoomControlStyle.SMALL
+    },
+    streetViewControl: false, 
     scrollwheel: false, 
-    disableDoubleClickZoom: false
+    disableDoubleClickZoom: false,
+    panControl: false,
+    scaleControl: false
   };
   map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
   mapLoading();
@@ -66,7 +72,7 @@ function createMarker(gram) {
     animation: google.maps.Animation.DROP
   });
 
-  var content = '<img src="' + gram.images.low_resolution.url + '" >'
+  var content = '<img src="' + gram.images.low_resolution.url + '" ><p>' + gram.user.username + '</p>';
   var infoBox = new google.maps.InfoWindow({ 
     content: content, 
     maxWidth: 1000 

@@ -29,6 +29,7 @@ function instagramInit() {
         checkForNextRequest();
       },
       error: function(xhr, status, error) {
+        console.log('ERROR!!!')
         console.log(xhr.responseText);
         console.log(status);
         console.log(error);
@@ -37,7 +38,7 @@ function instagramInit() {
   }
 
   function checkForNextRequest() {
-    if (grams.length < 20 && requestCounter < 100) {
+    if (grams.length < 15 && requestCounter < 100) {
       getGrams();
     } else {
       gramsLoaded();
@@ -59,11 +60,10 @@ function instagramInit() {
   function containsGram(gram) {
     var i;
     for (i = 0; i < grams.length; i++) {
-        if (grams[i] === gram) {
-            return true;
-        }
+      if (grams[i].id === gram.id) {
+        return true;
+      }
     }
-
     return false;
   }
 
